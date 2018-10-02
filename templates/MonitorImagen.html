@@ -1,0 +1,37 @@
+<html>
+<head><title>Imagen</title></head>
+
+<body>
+    <h1>Monitor de Imagen Termica</h1>
+    <div style="background-color:rgba(0,150,10,0.6)">
+        <hr>
+        <form method='GET' action=''>
+        <input type='text' name='numero' placeholder='Ingrese N° de SET a buscar' value='{{request.GET.numero}}'/>
+        <input type='submit' value='Buscar'/>
+
+            <form method='GET' action=''>
+                <input type='text' name='fecha' placeholder='Ingrese Fecha de Inicio' value='{{request.GET.fecha}}'/>
+                <input type='submit' value='Filtrar'/>
+                <td>Nota:Formato de timepo  aaaa-mm-dd hh:mm:ss con reloj de 24Hs </td>
+            </form>
+        </form>
+        <hr>
+    </div>
+    <br>
+    <table border="1" style="font-size : 18pt">
+        <tr>
+            <td>SET</td><td>Fecha</td><td>Imagen</td>
+        </tr>
+        {% for item in AllObjectImgSon_Contex %}
+            <tr>
+                <a href="{% url 'ImagenGet_URLname' imagen_id=item.id %}"></a> </a>
+                <td>{{ item.set.nombre }}</td>
+                <td>{{ item.fecha_hora}}</td>
+                <td><img src="{{ item.termico.url }}"></td>
+            </tr>
+        {% endfor %}
+
+    </table>
+    <a href="{% url 'index' %}"> &lt; Inicio </a>
+</body>
+</html>

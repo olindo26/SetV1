@@ -1,0 +1,57 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Home SET</title>
+        <link rel="stylesheet"  href="{% static 'IndexStyle1.css' %}">
+    </head>
+
+    <body>
+        <div id="fondo">
+            <div id="encabezado">
+            <br>
+            <td><span style="color:rgba(1, 1, 1, 0)">--------------------------------</span></td>
+            <td><span style="color:rgba(0, 0, 0, 1)">Monitoreo de Sub-Estaciones Transformadoras</span></td>
+            <br>
+            <td><span style="color:rgba(1, 1, 1, 0)">----------------------------------------------</span></td>
+            <td><span style="color:rgba(0, 0, 0, 1)">UTN FRN - COPELCO</span></td>
+            <br>
+            <br>
+                <div id="lateralderecho">
+                <td><span style="color:rgba(1, 1, 1, 0)">-----</span></td>
+                <td><span style="color:White">Contactos:</span></td>
+                <td><span style="color:rgba(1, 1, 1, 0)">-----------------------------------------------</span></td>
+                </div>
+                    <div id="cuerpo">
+                    <br>
+                    {% for item in AllObjectIcono_Contex %}
+                    <tr>
+                        {% if item.id == 4 %}
+                        <br>
+                            <td><span style="color: rgba(1, 1, 1, 0)">------------------</span></td>
+                            <td><a href="{% url 'Reportes_URLname' %}"> Reportes </a></td>
+                            <td><span style="color:rgba(1, 1, 1, 0)">-----------------------------------------</span></td>
+                            <td><a href="{% url 'ListaSet_URLname' %}"> Lista de SETs </a></td>
+                            <td><span style="color:rgba(1, 1, 1, 0)">----------------------------------------</span></td>
+                            <td><a href="{% url 'Señales_URLname' %}"> Señales </a></td>
+                        <br><br><br><br>
+                        {% endif %}
+                    <td><span style="color:rgba(1, 1, 1, 0)">-------</span></td>
+                    <td><a href="{% url 'IconoGet_URLname' icono_id=item.id %}"></a> </a></td>
+                    <td><img src="{{ item.iconoimg.url }}"></td>
+                    <td><span style="color:rgba(1, 1, 1, 0)">-------</span></td>
+                    </tr>
+                    {% endfor %}
+                    <br>
+                    <tr>
+                    <td><span style="color:rgba(1, 1, 1, 0)">---------------------</span></td>
+                    <td><a href="{% url 'Espectro_URLname' %}"> Espectro</a></td>
+                    <td><span style="color:rgba(1, 1, 1, 0)">-----------------------------------</span></td>
+                    <td><a href="{% url 'Imagen_URLname' %}"> Monitor de Imagen</a></td>
+                    <td><span style="color:rgba(1, 1, 1, 0)">------------------------------</span></td>
+                    <td><a href="{% url 'Sonido_URLname' %}"> Monitor de Sonido </a></td>
+                    </tr>
+                    </div>
+            </div>
+        </div>
+    </body>
+</html>

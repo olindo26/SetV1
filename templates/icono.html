@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Set</title>
+{% endblock %}
+
+{% block body %}
+    <h1>Soy Icono</h1>
+    <hr>
+    <br>
+    <a href="{% url 'index' %}"> &lt; Inicio </a>
+    <h1>{{ IconoId_Contex.nombre }}</h1>
+    <img src="{{ IconoId_Contex.iconoimg.url }}">
+
+
+{% endblock %}

@@ -1,0 +1,52 @@
+
+<html>
+<head><title>Señales</title></head>
+
+<body>
+    <h1 style="color:rgba(1, 1, 60, 1)" >Monitor de Señales</h1>
+
+    <div style="background-color:rgba(0,150,10,0.6)">
+        <hr>
+        <form method='GET' action=''>
+        <input type='text' name='numero' placeholder='Ingrese N° de SET a buscar' value='{{request.GET.numero}}'/>
+        <input type='submit' value='Buscar'/>
+
+            <form method='GET' action=''>
+                <input type='text' name='fecha' placeholder='Ingrese Fecha de Inicio' value='{{request.GET.fecha}}'/>
+                <input type='submit' value='Filtrar'/>
+                <td>Nota:Formato de timepo  aaaa-mm-dd hh:mm:ss con reloj de 24Hs </td>
+            </form>
+        </form>
+        <a href="{% url 'SeñalesOsc_URLname' %}"> Modo Grafico </a>
+        <hr>
+    </div>
+
+    <table border="1" style="font-size : 18pt">
+        <tr>
+            <td>SET</td><td>Fecha</td><td>Vr</td><td>Vs</td><td>Vt</td><td>Des_U0</td><td>Des_U2</td><td>Ir</td><td>Is</td>
+            <td>It</td><td>In</td><td>Des_I0</td><td>Des_I2</td><td>Frec</td>
+        </tr>
+        {% for item in AllObjectCalidad_Contex %}
+            <tr>
+                <a href="{% url 'MedicionGet_URLname' medicion_id=item.id %}"></a> </a>
+                <td>{{ item.set.nombre }}</td>
+                <td>{{ item.fecha_hora}}</td>
+                <td>{{ item.voltage_R }}</td>
+                <td>{{ item.voltage_S }}</td>
+                <td>{{ item.voltage_T }}</td>
+                <td>{{ item.desbalance_U0 }}</td>
+                <td>{{ item.desbalance_U2 }}</td>
+                <td>{{ item.corriente_R }}</td>
+                <td>{{ item.corriente_S }}</td>
+                <td>{{ item.corriente_T }}</td>
+                <td>{{ item.corriente_N }}</td>
+                <td>{{ item.desbalance_I0 }}</td>
+                <td>{{ item.desbalance_I2 }}</td>
+                <td>{{ item.frecuencia }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+    <a href="{% url 'index' %}"> &lt; Inicio </a>
+</body>
+</html>

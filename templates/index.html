@@ -1,0 +1,58 @@
+{% load staticfiles %}
+<!doc type html>
+<html>
+<head><link rel="stylesheet" href="{% static 'style.css' %}"><title>Home SET</title></head>
+<body>
+<h1 style="color:rgba(1, 1, 60, 1)"> Monitoreo de Sub Estaciones Transformadoras</h1>
+<hr>
+<br>
+
+{% for item in AllObjectIcono_Contex %}
+<tr>
+    {% if item.id == 4 %}
+    <br>
+    <td><span style="color: White">-----------</span></td>
+    <td>
+        <a href="{% url 'Reportes_URLname' %}"> Reportes </a>
+    </td>
+    <td><span style="color:White">-------------------------</span></td>
+    <td>
+        <a href="{% url 'ListaSet_URLname' %}"> Lista de SETs </a>
+    </td>
+    <td><span style="color:White">----------------------</span></td>
+    <td>
+        <a href="{% url 'Señales_URLname' %}"> Señales </a>
+    </td>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    {% endif %}
+
+    <td>
+        <a href="{% url 'IconoGet_URLname' icono_id=item.id %}"></a> </a>
+    </td>
+    <td><img src="{{ item.iconoimg.url }}"></td>
+
+</tr>
+{% endfor %}
+<br>
+<tr>
+    <td><span style="color:White">-------------</span></td>
+    <td>
+        <a href="{% url 'Espectro_URLname' %}"> Espectro</a>
+    </td>
+    <td><span style="color:White">--------------------</span></td>
+    <td>
+        <a href="{% url 'Sonido_URLname' %}"> Monitor de Sonido </a>
+    </td>
+    <span style="color:White">---------------</span></td>
+    <td>
+        <a href="{% url 'Imagen_URLname' %}"> Monitor de Imagen </a>
+    </td>
+</tr>
+
+</body>
+</html>
+ 

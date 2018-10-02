@@ -1,0 +1,19 @@
+*{
+   margin: 0px;
+   paddding: 0px;
+}
+
+div#baner{
+    margin:auto;
+    margin-top:20px;
+    width:960px;
+    heigth:800px;
+    backgraund-color:red;
+}
+
+div#propa{
+    float: rigth;
+    width: 30px;
+    heigth: 50PX;
+    backgraund-color:green;
+}

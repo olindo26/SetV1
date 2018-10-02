@@ -1,0 +1,36 @@
+*{
+   margin: 0px;
+   paddding: 0px;
+}
+
+div#fondo{
+    widht:960px;
+    height:680px;
+    background-image:url(FondoGeneral1.jpg);
+    background
+}
+
+div#encabezado{
+	font-size: xx-large;
+    widht: 960px;
+    height: 160px;
+    background-color: rgba(64, 95, 135, 0.9);
+}
+
+div#cuerpo{
+	font-size: medium;
+    margin-top:20px;
+    float: left;
+    widht: 300px;
+    height: 500px;
+    background-color: rgba(212, 212, 212, 0.7);
+}
+
+div#lateralderecho{
+	font-size: large;
+    margin-top:20px;
+    float: right;
+    widht: 400px;
+    height: 500px;
+    background-color: rgba(0, 0, 0, 0.8);
+}

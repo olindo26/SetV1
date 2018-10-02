@@ -1,0 +1,135 @@
+{% load static %}
+
+<html>
+<head>
+    <title>Señales</title>
+    <script src="{% static "Chart.js" %}"> </script>
+    <script src="{% static "Chart.bundle.min.js" %}"></script>
+    <script src="{% static "utils.js" %}"> </script>
+	<!-- <style> canvas{-moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;}	</style> -->
+</head>
+
+<body>
+    <h1 style="color:rgba(1, 1, 60, 1)" >Monitor de Señales</h1>
+
+    <div style="background-color:rgba(0,150,10,0.6)">
+        <hr>
+        <form method='GET' action=''>
+        <input type='text' name='numero' placeholder='Ingrese N° de SET a buscar' value='{{request.GET.numero}}'/>
+        <input type='submit' value='Buscar'/>
+
+            <form method='GET' action=''>
+                <input type='text' name='fecha' placeholder='Ingrese Fecha de Inicio' value='{{request.GET.fecha}}'/>
+                <input type='submit' value='Filtrar'/>
+                <td>Nota:Formato de timepo  aaaa-mm-dd hh:mm:ss con reloj de 24Hs </td>
+            </form>
+        </form>
+        <a href="{% url 'Señales_URLname' %}"> Modo Datos </a>
+        <hr>
+    </div>
+
+    <div style="width:80%;">
+		<canvas id="canvas"></canvas>
+	</div>
+	<script>
+		var Vrdata = [0,150,290,311,290,150,0,-150,-290,-311,-290,-150,0]
+		var Vsdata = [150,290,311,290,150,0,-150,-290,-311,-290,-150,0,150]
+		var Vtdata = [311,290,150,0,-150,-290,-311,-290,-150,0,150,290,311]
+		var Irdata = [9,9,9,9,9,9,9,9,9,9,9,9,9]
+		var Isdata = [10,20,30,40,30,20,10,-10,-20,-30,-40,-30,-20]
+		var Itdata = [-119,-119,-119,-119,-119,-119,-119,-119,-119,-119,-119,-119,-119]
+		var Indata = [90,90,150,200,150,90,90,-90,-90,-150,-200,-150,-90]
+		var Tiempo = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+		var config = {
+			type: 'line',
+			data: {
+				labels: Tiempo,
+				datasets: [{
+					label: 'Vr',
+					fill: false,
+					backgroundColor: window.chartColors.blue,
+					borderColor: window.chartColors.blue,
+					data:Vrdata,
+
+				}, {
+					label: 'Vs',
+					fill: false,
+					backgroundColor: window.chartColors.green,
+					borderColor: window.chartColors.green,
+					data: Vsdata,
+				}, {
+					label: 'Vt',
+					backgroundColor: window.chartColors.red,
+					borderColor: window.chartColors.red,
+					fill: false,
+					data: Vtdata,
+					
+				}, {
+					label: 'Ir',
+					fill: false,
+					backgroundColor: window.chartColors.yellow,
+					borderColor: window.chartColors.yellow,
+					data: Irdata,
+				}, {
+					label: 'Is',
+					fill: false,
+					backgroundColor: window.chartColors.orange,
+					borderColor: window.chartColors.orange,
+					data: Isdata,
+				}, {
+					label: 'It',
+					backgroundColor: window.chartColors.purple,
+					borderColor: window.chartColors.purple,
+					fill: false,
+					data: Itdata,			
+				},{
+					label: 'In',
+					backgroundColor: window.chartColors.blue,
+					borderColor: window.chartColors.blue,
+					fill: false,
+					data: Indata,					
+				}]
+			},
+
+			options: {
+				responsive: true,
+				title: {
+					display: false,
+					text: 'Grafica de señales'
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Tiempo'
+						}
+					}],
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Amplitud'
+						}
+					}]
+				}
+			}
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById('canvas').getContext('2d');
+			window.myLine = new Chart(ctx, config);
+		};
+	</script>
+
+    <a href="{% url 'index' %}"> &lt; Inicio </a>
+</body>
+</html>

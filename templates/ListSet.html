@@ -1,0 +1,25 @@
+<html>
+<head><title>Lista</title></head>
+
+<body>
+    <h1 style="color:rgba(1, 1, 60, 1)">Listado de SETs</h1>
+    <hr>
+    <br>
+    <table border="1" style="font-size : 18pt">
+        <tr>
+            <td>Nombre</td><td>Ubicación</td>
+        </tr>
+        {% for item in ListSet_Contex %}
+            <tr>
+                <td>
+                    <a href="{% url 'SetGet_URLname' set_id=item.id %}">{{ item.nombre }}</a> </a>
+                </td>
+                <td>{{ item.ubicacion }}</td>
+            </tr>
+
+        {% endfor %}
+
+    </table>
+    <a href="{% url 'index' %}"> &lt; Inicio </a>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+<head><title>Sonido</title></head>
+
+<body>
+    <h1 style="color:rgba(1, 1, 60, 1)"> Monitor de Contaminación Acustica</h1>
+    <div style="background-color:rgba(0,150,10,0.6)">
+        <hr>
+        <form method='GET' action=''>
+        <input type='text' name='numero' placeholder='Ingrese N° de SET a buscar' value='{{request.GET.numero}}'/>
+        <input type='submit' value='Buscar'/>
+
+            <form method='GET' action=''>
+                <input type='text' name='fecha' placeholder='Ingrese Fecha de Inicio' value='{{request.GET.fecha}}'/>
+                <input type='submit' value='Filtrar'/>
+                <td>Nota:Formato de timepo  aaaa-mm-dd hh:mm:ss con reloj de 24Hs </td>
+            </form>
+        </form>
+        <hr>
+    </div>
+    <a href="{% url 'index' %}"> &lt; Inicio </a>
+</body>
+</html>

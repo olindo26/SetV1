@@ -1,0 +1,30 @@
+{% load static %}
+<head>
+    <title>Practica Django+Chart.js</title>
+    <script src="{% static "Chart.min.js" %}"> </script>
+    <script src="{% static "Chart.bundle.min.js" %}"></script>
+    <script src="{% static "utils.js" %}"> </script>
+    <script src="{% static "jquery-1.12.0.min.js" %}"> </script>
+</head>
+<body>
+    <h1>Helloo Charts</h1>
+    <script>
+        var endpoint = 'api/data/'
+        var customerDjango = parseInt("{{customers}}") * 100
+        console.log(customerDjango)
+
+        $.ajax({
+            method: "GET",
+            url: endpoint,
+            success: function(data){ 
+            	console.log(data)
+            },
+            error: function(error_data){
+            	console.log("error")
+            	console.log(error_data)
+            }
+        })
+    </script>
+
+</body>
+</html>

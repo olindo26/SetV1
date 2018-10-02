@@ -1,0 +1,14 @@
+<html>
+<head><title>SET</title></head>
+
+<body>
+    <h1 style="color:rgba(1, 1, 60, 1)"> Datos de la SET</h1>
+    <hr>
+    <br>
+    <a href="{% url 'index' %}"> &lt; Inicio </a>
+    <h1>{{ SetId_Contex.nombre }}</h1>
+    <h4>{{ SetId_Contex.ubicacion }}</h4>
+    <p>{{ SetId_Contex.descripcion }}</p>
+    <img src="{{ SetId_Contex.imagen.url }}">
+</body>
+</html>

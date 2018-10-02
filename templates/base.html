@@ -1,0 +1,22 @@
+{% load static %}
+
+<html>
+  <head>
+    <script src="{% static "jquery-3.3.1.min.js" %}"> </script>
+    <script src="{% static "Chart.bundle.min.js" %}"></script>
+    <!--<script src="{% static "Chart.min.js" %}"> </script>-->
+    <script src="{% static "Chart.min.js" %}"> </script>
+    <!--<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js'></script> COn esto funcionan los marker-->
+    <script src="{% static "utils.js" %}"> </script>
+  </head>
+  <body>
+    {% block content %}
+    {% endblock content %}
+
+    <script>
+    $(document).ready(function(){
+      {% block jquery %}{% endblock %}
+    })
+    </script>
+  </body>
+</html>
